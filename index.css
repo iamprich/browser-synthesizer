@@ -1,0 +1,99 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: 'Gugi', cursive;
+    background: hsl(0, 0%, 90%);
+}
+
+.header {
+    text-align: center;
+}
+
+.warning {
+    color: hsl(0, 50%, 50%);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.synthesizer {
+    max-width: 600px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 0.75fr 1fr;
+    grid-template-areas: "controls controls controls controls" "keyboard keyboard keyboard keyboard";
+    background: hsl(0, 0%, 47%);
+    box-shadow: inset 0 0 20px hsl(0, 0%, 58%),
+    0 -5px 0 hsl(0, 0%, 27%),
+    0 0 4px hsl(0, 0%, 27%);
+    border-radius: 8px;
+}
+
+.controls {
+    grid-area: controls;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+    border-bottom: 2px solid hsl(0, 0%, 27%);
+    background: linear-gradient(to right, hsl(0, 0%, 47%) 20%, hsl(0, 0%, 50%) 80%);
+}
+
+.control-title {
+    font-style: italic;
+}
+
+.vco1 {
+    border-right: 1px solid hsl(0, 0%, 27%);
+}
+
+.vca {
+    border-left: 1px solid hsl(0, 0%, 27%);
+}
+
+.input-group {
+    margin: 1em;
+}
+
+.keyboard {
+    grid-area: keyboard;
+    margin: 0;
+    padding: 1em;
+    display: flex;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    box-shadow: 0 8px 0 hsl(0, 0%, 27%);
+}
+
+.key {
+    background: hsl(0, 0%, 92%);
+    flex: 1 1 10%;
+    margin: 0.5em 0.25em;
+    height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 0 hsl(0, 0%, 86%);
+    transition: all 0.1s;
+}
+
+.black {
+    flex: 0 0 8%;
+    z-index: 2;
+    height: 120px;
+    color: #ececec;
+    background: #333;
+    box-shadow: 0 4px 0 hsl(0, 0%, 16%);
+    margin: 8px -18px;
+}
+
+.playing {
+    color: #333;
+    background: hsl(197, 71%, 73%);
+    transform: translateY(4px);
+    box-shadow: none;
+}

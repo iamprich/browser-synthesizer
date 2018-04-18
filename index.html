@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css?family=Gugi" rel="stylesheet">
+    <title>Browser Synthesizer</title>
+</head>
+<body>
+<main id="main">
+    <header class="header">
+        <h1>Browser Synthesizer</h1>
+        <h3>Jam out with your computer keyboard or MIDI controller!</h3>
+        <h4 class="warning">* Touch devices not currently supported *</h4>
+    </header>
+    <section id="synthesizer">
+        <div class="container">
+            <div class="synthesizer">
+                <div class="controls">
+                    <div class="vco1">
+                        <h4 class="control-title">VCO 1</h4>
+                        <div class="input-group">
+                            <label for="oscillatorSelector">Oscillator Type</label>
+                            <select name="oscillatorSelector" id="oscillatorSelector">
+                                <option value="sine">Sine</option>
+                                <option value="square">Square</option>
+                                <option value="sawtooth">Sawtooth</option>
+                                <option value="triangle">Triangle</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="vca">
+                        <h4 class="control-title">VCA</h4>
+                        <div class="input-group">
+                            <label for="vcaVolume">Volume</label>
+                            <input type="range" name="vcaVolume" id="vcaVolume" min="0.01" max="1.0" step="0.01"
+                                   value="0.20">
+                        </div>
+                    </div>
+                </div>
+                <ul id="keyboard" class="keyboard">
+                    <li data-note="60" class="key">A</li>
+                    <li data-note="61" class="key black">W</li>
+                    <li data-note="62" class="key">S</li>
+                    <li data-note="63" class="key black">E</li>
+                    <li data-note="64" class="key">D</li>
+                    <li data-note="65" class="key">F</li>
+                    <li data-note="66" class="key black">T</li>
+                    <li data-note="67" class="key">G</li>
+                    <li data-note="68" class="key black">Y</li>
+                    <li data-note="69" class="key">H</li>
+                    <li data-note="70" class="key black">U</li>
+                    <li data-note="71" class="key">J</li>
+                    <li data-note="72" class="key">K</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script src="synthesizer.js"></script>
+</body>
+</html>
