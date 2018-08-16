@@ -39,6 +39,9 @@ function onMIDISuccess(midiAccess) {
     }
 }
 
+let midi_message_on = 144;
+let midi_message_off = 128;
+
 function onMIDIMessage(event) {
     let data = event.data;
     let type = data[0] & 0xf0;
@@ -46,15 +49,13 @@ function onMIDIMessage(event) {
     let velocity = data[2];
 
     switch (type) {
-        case 144:
-            //        note on
+        case midi_message_on:
             if (velocity !== 0) {
                 noteOn(note_number);
             }
             break;
 
-        case 128:
-            //        note off
+        case midi_message_off:
             noteOff(note_number);
             break;
     }
