@@ -1,12 +1,17 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="index.css">
-    <link href="https://fonts.googleapis.com/css?family=Gugi" rel="stylesheet">
+    <meta charset="UTF-8"/>
+    <meta
+            name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <link rel="stylesheet" href="index.css"/>
+    <link
+            href="https://fonts.googleapis.com/css?family=Gugi"
+            rel="stylesheet"
+    />
     <title>BS1 Monophonic Synthesizer</title>
 </head>
 <body>
@@ -14,17 +19,30 @@
     <header class="header">
         <h1>BS1 Monophonic Synthesizer</h1>
         <h3>Jam out with your computer keyboard or MIDI controller!</h3>
-        <h4 class="warning">Touch devices not currently supported </h4>
+        <h4 class="warning">Touch devices not currently supported</h4>
     </header>
     <section id="synthesizer">
         <div class="container">
             <div class="synthesizer">
                 <div class="controls">
-                    <div class="vco1">
+                    <div class="control">
+                        <h4 class="control-title">POWER</h4>
+                        <div class="input-group">
+                            <label class="switch">
+                                <input id="power" type="checkbox" class="switch__input">
+                                <div class="switch__toggle"></div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="control">
                         <h4 class="control-title">VCO 1</h4>
                         <div class="input-group">
                             <label for="oscillatorSelector">Oscillator Type</label>
-                            <select name="oscillatorSelector" id="oscillatorSelector" class="oscillatorSelector">
+                            <select
+                                    name="oscillatorSelector"
+                                    id="oscillatorSelector"
+                                    class="oscillatorSelector"
+                            >
                                 <option value="sine">Sine</option>
                                 <option value="square">Square</option>
                                 <option value="sawtooth">Sawtooth</option>
@@ -32,29 +50,36 @@
                             </select>
                         </div>
                     </div>
-                    <div class="vca">
+                    <div class="control">
                         <h4 class="control-title">VCA</h4>
                         <div class="input-group">
                             <label for="vcaVolume">Volume</label>
-                            <input type="range" name="vcaVolume" id="vcaVolume" min="0.01" max="1.0" step="0.01"
-                                   value="0.20">
+                            <input
+                                    type="range"
+                                    name="vcaVolume"
+                                    id="vcaVolume"
+                                    min="0.0"
+                                    max="1.0"
+                                    step="0.01"
+                                    value="0.20"
+                            />
                         </div>
                     </div>
                 </div>
                 <ul id="keyboard" class="keyboard">
-                    <li data-note="60" class="key">A</li>
-                    <li data-note="61" class="key black">W</li>
-                    <li data-note="62" class="key">S</li>
-                    <li data-note="63" class="key black">E</li>
-                    <li data-note="64" class="key">D</li>
-                    <li data-note="65" class="key">F</li>
-                    <li data-note="66" class="key black">T</li>
-                    <li data-note="67" class="key">G</li>
-                    <li data-note="68" class="key black">Y</li>
-                    <li data-note="69" class="key">H</li>
-                    <li data-note="70" class="key black">U</li>
-                    <li data-note="71" class="key">J</li>
-                    <li data-note="72" class="key">K</li>
+                    <li data-key="KeyA" class="key">A</li>
+                    <li data-key="KeyW" class="key black">W</li>
+                    <li data-key="KeyS" class="key">S</li>
+                    <li data-key="KeyE" class="key black">E</li>
+                    <li data-key="KeyD" class="key">D</li>
+                    <li data-key="KeyF" class="key">F</li>
+                    <li data-key="KeyT" class="key black">T</li>
+                    <li data-key="KeyG" class="key">G</li>
+                    <li data-key="KeyY" class="key black">Y</li>
+                    <li data-key="KeyH" class="key">H</li>
+                    <li data-key="KeyU" class="key black">U</li>
+                    <li data-key="KeyJ" class="key">J</li>
+                    <li data-key="KeyK" class="key">K</li>
                 </ul>
             </div>
         </div>
