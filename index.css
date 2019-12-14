@@ -1,184 +1,203 @@
+:root {
+  --primary-blue: hsl(197, 51%, 53%);
+  --light-blue: hsla(197, 51%, 73%, 0.25);
+}
+
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html,
 body {
-    font-family: "Gugi", cursive;
-    background: hsl(0, 0%, 67%);
-    color: hsl(0, 0%, 16%);
+  font-family: "Gugi", cursive;
+  background: hsl(0, 0%, 67%);
+  color: hsl(0, 0%, 16%);
 }
 
 .header {
-    text-align: center;
+  text-align: center;
 }
 
 .warning {
-    color: hsl(0, 48%, 44%);
+  color: hsl(0, 48%, 44%);
 }
 
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .synthesizer {
-    max-width: 40rem;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 0.75fr 1fr;
-    grid-template-areas: "controls controls controls controls" "keyboard keyboard keyboard keyboard";
-    background: hsl(0, 0%, 80%);
-    box-shadow: inset 0 0 10px hsl(0, 0%, 58%), 0 -5px 0 hsl(0, 0%, 27%),
-    0 0 16px hsla(0, 0%, 60%, 30);
-    border-radius: 8px;
-    border: 1px solid hsl(0, 0%, 27%);
+  max-width: 40rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 0.5fr 1fr 1fr;
+  grid-template-areas: "lcd lcd lcd lcd" "controls controls controls controls" "keyboard keyboard keyboard keyboard";
+  background: hsl(0, 0%, 80%);
+  box-shadow: inset 0 0 10px hsl(0, 0%, 58%), 0 -5px 0 hsl(0, 0%, 27%),
+  0 0 16px hsla(0, 0%, 60%, 30);
+  border-radius: 8px;
+  border: 1px solid hsl(0, 0%, 27%);
+}
+
+.lcd {
+  grid-area: lcd;
+  background: hsl(0, 0%, 80%);
+  border-bottom: 2px solid hsl(0, 0%, 27%);
+  padding: 1rem;
+}
+
+.lcd .inner-display {
+  background: var(--light-blue);
+  padding: 0.75rem;
+  border: 1px dashed var(--primary-blue);
+  height: 100%;
 }
 
 .controls {
-    grid-area: controls;
-    display: grid;
-    grid-template-columns: 0.5fr 1fr 1fr;
-    border-bottom: 2px solid hsl(0, 0%, 27%);
-    background: hsl(0, 0%, 80%);
-    z-index: 1;
+  grid-area: controls;
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 1fr;
+  border-bottom: 2px solid hsl(0, 0%, 27%);
+  background: hsl(0, 0%, 80%);
+  z-index: 1;
 }
 
 .control {
-    display: flex;
-    flex-flow: column;
-    align-items: center;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
 }
 
 .control:not(:last-child) {
-    border-right: 1px solid black;
+  border-right: 1px solid black;
 }
 
 .control-title {
-    margin-bottom: -0.5rem;
-    font-style: italic;
-    border-bottom: 2px solid hsl(197, 51%, 53%);
+  margin-bottom: -0.5rem;
+  font-style: italic;
+  border-bottom: 2px solid var(--primary-blue);
 }
 
 .input-group {
-    margin: auto;
+  margin: auto;
 }
 
 .oscillatorSelector {
-    font-size: 1em;
+  font-size: 1em;
 }
 
 .keyboard {
-    grid-area: keyboard;
-    margin: 0;
-    padding: 1em;
-    display: flex;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-    box-shadow: 0 5px 0 hsl(0, 0%, 27%);
+  grid-area: keyboard;
+  margin: 0;
+  padding: 1em;
+  display: flex;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  box-shadow: 0 5px 0 hsl(0, 0%, 27%);
 }
 
 .key {
-    background: hsl(0, 0%, 92%);
-    flex: 1 1 10%;
-    margin: 0.5em 0.25em;
-    height: 160px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 4px 0 hsl(0, 0%, 86%);
-    transition: all 100ms;
+  background: hsl(0, 0%, 92%);
+  flex: 1 1 10%;
+  margin: 0.5em 0.25em;
+  height: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 0 hsl(0, 0%, 86%);
+  transition: all 100ms;
 }
 
 .black {
-    flex: 0 0 8%;
-    z-index: 2;
-    height: 120px;
-    color: #ececec;
-    background: #333;
-    box-shadow: 0 4px 0 hsl(0, 0%, 16%);
-    margin: 8px -18px;
+  flex: 0 0 8%;
+  z-index: 2;
+  height: 120px;
+  color: #ececec;
+  background: #333;
+  box-shadow: 0 4px 0 hsl(0, 0%, 16%);
+  margin: 8px -18px;
 }
 
 .playing {
-    color: hsl(0, 0%, 10%);
-    background: hsl(197, 51%, 53%);
-    transform: translateY(4px);
-    box-shadow: none;
+  color: hsl(0, 0%, 10%);
+  background: var(--primary-blue);
+  transform: translateY(4px);
+  box-shadow: none;
 }
 
 .switch {
-    position: relative;
-    display: inline-block;
-    padding: 0 1.25rem;
-    border-radius: 6px;
-    border: 1px solid #a5a8a8;
-    overflow: hidden;
-    width: 6rem;
-    box-sizing: border-box;
+  position: relative;
+  display: inline-block;
+  padding: 0 1.25rem;
+  border-radius: 6px;
+  border: 1px solid #a5a8a8;
+  overflow: hidden;
+  width: 6rem;
+  box-sizing: border-box;
 }
 
 .switch__input {
-    position: absolute;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    margin: 0;
-    padding: 0;
-    border: 0;
-    filter: alpha(opacity=0.1);
-    opacity: 0.001;
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  filter: alpha(opacity=0.1);
+  opacity: 0.001;
 }
 
 .switch__toggle {
-    position: relative;
-    display: inline-block;
-    vertical-align: top;
-    padding: 0;
-    font: inherit;
-    cursor: default;
-    box-sizing: border-box;
-    background-clip: padding-box;
-    user-select: none;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    line-height: 2rem;
-    height: 2rem;
-    width: 2rem;
-    border-radius: 5px;
-    color: #454545;
-    background-color: #e5e9e8;
-    border: 1px solid #a5a8a8;
-    margin: -1px 0 -1px -1.3rem;
-    transition: margin-left 100ms ease-in-out;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  padding: 0;
+  font: inherit;
+  cursor: default;
+  box-sizing: border-box;
+  background-clip: padding-box;
+  user-select: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 2rem;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 5px;
+  color: #454545;
+  background-color: #e5e9e8;
+  border: 1px solid #a5a8a8;
+  margin: -1px 0 -1px -1.3rem;
+  transition: margin-left 100ms ease-in-out;
 }
 
 .switch__input:checked + .switch__toggle {
-    margin-left: 2.7rem;
+  margin-left: 2.7rem;
 }
 
 .switch__toggle:before,
 .switch__toggle:after {
-    position: absolute;
-    width: 5rem;
-    z-index: -1;
-    box-sizing: border-box;
+  position: absolute;
+  width: 5rem;
+  z-index: -1;
+  box-sizing: border-box;
 }
 
 .switch__toggle:before {
-    content: 'ON';
-    color: hsl(197, 51%, 53%);
-    background-color: hsl(197, 51%, 83%);
-    border-radius: 0;
-    top: -1px;
-    right: 1rem;
-    padding-left: 1.5rem;
+  content: 'ON';
+  color: var(--primary-blue);
+  background-color: hsl(197, 51%, 83%);
+  border-radius: 0;
+  top: -1px;
+  right: 1rem;
+  padding-left: 1.5rem;
 }
 
 .switch__toggle:after {
-    content: 'OFF';
-    background-color: #d3d7d7;
-    top: -1px;
-    left: 1rem;
-    padding-left: 2rem;
+  content: 'OFF';
+  background-color: #d3d7d7;
+  top: -1px;
+  left: 1rem;
+  padding-left: 2rem;
 }
