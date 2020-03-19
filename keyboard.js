@@ -15,27 +15,21 @@ const PLAYABLE_KEYS = {
 };
 
 export default class Keyboard {
-  static playable_keys = PLAYABLE_KEYS;
-  static active_notes = [];
-
-  static get playableKeys() {
-    return this.playable_keys;
+  constructor() {
+    this.playable_keys = PLAYABLE_KEYS;
+    this.active_notes = [];
   }
 
-  static get activeNotes() {
-    return this.active_notes;
-  }
-
-  static get currentNote() {
+  get currentNote() {
     return this.active_notes[this.active_notes.length - 1];
   }
 
-  static set noteOn(keyCode) {
+  noteOn(keyCode) {
     if (this.active_notes.includes(keyCode)) return;
     this.active_notes.push(keyCode);
   }
 
-  static set noteOff(keyCode) {
+  noteOff(keyCode) {
     this.active_notes.splice(this.active_notes.indexOf(keyCode), 1);
   }
 }

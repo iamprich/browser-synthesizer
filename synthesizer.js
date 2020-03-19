@@ -1,5 +1,8 @@
 import Keyboard from "./keyboard.js";
 
+// Create instance of Keyboard
+let keyboard = new Keyboard()
+
 // Audio context and master out
 const CONTEXT = new (window.AudioContext || window.webkitAudioContext)();
 const ANALYZER = CONTEXT.createAnalyser();
@@ -31,8 +34,7 @@ let visualize = () => {
     ANALYZER.getByteTimeDomainData(dataArray);
     lcdContext.fillStyle = "rgb(200, 200, 200)";
     lcdContext.fillRect(0, 0, WIDTH, HEIGHT);
-    lcdContext.lineWidth = 2;
-    lcdContext.strokeStyle = "rbg(0, 0, 0)";
+    lcdContext.lineWidth = 1;
     lcdContext.beginPath();
     let sliceWidth = (WIDTH * 1.0) / bufferLength;
     let x = 0;
@@ -76,7 +78,7 @@ let volume = 0.2;
 let vca_volume = document.getElementById("vcaVolume");
 vca_volume.addEventListener("input", e => {
   volume = e.target.value;
-  if (Keyboard.activeNotes.length > 0) {
+  if (keyboard.active_notes.length > 0) {
     VCA.gain.linearRampToValueAtTime(volume, CONTEXT.currentTime + 0.02);
   }
 });
@@ -132,22 +134,22 @@ function onMIDIFailure(e) {
 }
 
 function noteOn(keyCode) {
-  let frequency = frequencyFromNoteNumber(Keyboard.playableKeys[keyCode]);
+  let frequency = frequencyFromNoteNumber(keyboard.playable_keys[keyCode]);
   VCO.frequency.setValueAtTime(frequency, CONTEXT.currentTime);
   VCA.gain.linearRampToValueAtTime(volume, CONTEXT.currentTime + 0.02);
-  Keyboard.noteOn = keyCode;
+  keyboard.noteOn(keyCode);
   document.querySelector(`[data-key='${keyCode}']`).classList.add("playing");
   visualize();
 }
 
 function noteOff(keyCode) {
-  Keyboard.noteOff = keyCode;
+  keyboard.noteOff(keyCode);
   document.querySelector(`[data-key='${keyCode}']`).classList.remove("playing");
 
-  if (Keyboard.activeNotes.length === 0) {
+  if (keyboard.active_notes.length === 0) {
     VCA.gain.linearRampToValueAtTime(0, CONTEXT.currentTime + 0.02);
   } else {
-    noteOn(Keyboard.currentNote);
+    noteOn(keyboard.currentNote);
   }
 }
 
@@ -158,14 +160,14 @@ function frequencyFromNoteNumber(note) {
 function changeOctave(direction) {
   let octave = 12;
 
-  Object.keys(Keyboard.playableKeys).forEach(pitch => {
+  Object.keys(keyboard.playable_keys).forEach(pitch => {
     if (direction === "up") {
-      Keyboard.playableKeys[pitch] += octave;
+      keyboard.playable_keys[pitch] += octave;
     } else {
-      Keyboard.playableKeys[pitch] -= octave;
+      keyboard.playable_keys[pitch] -= octave;
     }
   });
-  if (Keyboard.currentNote) noteOn(Keyboard.currentNote);
+  if (keyboard.currentNote) noteOn(keyboard.currentNote);
 }
 
 document.addEventListener("keydown", keyHandler);
@@ -176,12 +178,12 @@ function keyHandler(e) {
 
   switch (e.type) {
     case "keydown":
-      if (Keyboard.playableKeys.hasOwnProperty(e.code)) noteOn(e.code);
+      if (keyboard.playable_keys.hasOwnProperty(e.code)) noteOn(e.code);
       if (e.code === "KeyZ") changeOctave("down");
       if (e.code === "KeyX") changeOctave("up");
       break;
     case "keyup":
-      if (Keyboard.playableKeys.hasOwnProperty(e.code)) noteOff(e.code);
+      if (keyboard.playable_keys.hasOwnProperty(e.code)) noteOff(e.code);
       break;
   }
 }
